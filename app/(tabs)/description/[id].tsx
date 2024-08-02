@@ -1,8 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
-import { Image, Text, TouchableOpacity, View, ScrollView, Pressable } from "react-native";
-import * as Icon from "react-native-feather";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { Image, Text, TouchableOpacity, View, ScrollView } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function DescriptionRoom(){
     const navigation = useNavigation()
@@ -15,11 +14,11 @@ export default function DescriptionRoom(){
                         <TouchableOpacity className="w-8 h-8 bg-white rounded-full items-center justify-center"
                         onPress={() => navigation.goBack()}
                         >
-                            <FontAwesome5 name="chevron-left" size={20} color='black' />
+                            <Ionicons name="chevron-back" size={25} color='black' />
                         </TouchableOpacity>
                         <Text className="font-bold text-xl">Review</Text>
                         <TouchableOpacity className="w-8 h-8 bg-white rounded-full items-center justify-center">
-                            <FontAwesome5 name="heart"size={16} color='#FF4EA5' />
+                            <Ionicons name="heart-outline"size={16} color='#FF4EA5' />
                         </TouchableOpacity>
                     </View>
                     <Link href='/see' className="absolute bottom-0 p-2 bg-primary rounded-md self-end" asChild>
@@ -38,10 +37,10 @@ export default function DescriptionRoom(){
                         </Link>
                     </View>
                     <View className="space-y-2">
-                        <View className="flex-row justify-between px-5">
+                        <View className="flex-row items-center justify-between px-5">
                             <Text className="font-bold">Studio Moderne</Text>
                             <View className="flex-row items-center gap-x-1">
-                                <Icon.MapPin width={15} height={15} color='red'/>
+                                <Ionicons name="location-outline" size={20} color='#FF4EA5' />
                                 <Text>Douala, Logbessou</Text>
                             </View>
                         </View>
@@ -56,12 +55,12 @@ export default function DescriptionRoom(){
                             <View className="flex-row space-x-2">
                                 <Link href='/Login' asChild>
                                     <TouchableOpacity className="w-8 h-8 rounded-full bg-white items-center justify-center">
-                                        <FontAwesome5 name="phone" size={16} color='#FF4EA5' />
+                                        <Ionicons name="call" size={16} color='#FF4EA5' />
                                     </TouchableOpacity>
                                 </Link>
                                 <Link href='/Singup' asChild>
                                     <TouchableOpacity className="w-8 h-8 rounded-full bg-white items-center justify-center">
-                                        <FontAwesome5 name="sms" size={16} color='#FF4EA5' />
+                                        <Ionicons name="mail" size={16} color='#FF4EA5' />
                                     </TouchableOpacity>
                                 </Link>
                             </View>
@@ -70,9 +69,11 @@ export default function DescriptionRoom(){
                         <Text className="text-left px-5" numberOfLines={3}>
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum doloribus, illo saepe excepturi quasi provident. Voluptates fuga ut officiis quaerat iure deserunt similique iste! Consectetur nihil velit doloremque ullam soluta!
                         </Text>
-                        <TouchableOpacity className="w-2/5 self-center rounded-full p-3 bg-secondary px-5">
-                            <Text>Planifier une visite</Text>
-                        </TouchableOpacity>
+                        <Link href='/(tabs)/calendar' asChild>
+                            <TouchableOpacity className="w-2/4 self-center rounded-full p-3 bg-primary px-5">
+                                <Text className="text-center text-white">Planifier une visite</Text>
+                            </TouchableOpacity>
+                        </Link>
                     </View>
                 </View>
             </ScrollView>

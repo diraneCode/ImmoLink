@@ -1,5 +1,5 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function CardRecommended(){
     return(
@@ -10,11 +10,11 @@ export default function CardRecommended(){
                 <Text className="text-xs text-gray-500">LondonNW87JT England</Text>
                 <View className="w-56 flex-row items-center justify-between">
                     <View className="flex-row items-center">
-                        <Text className="font-bold text-primary">$200</Text>
-                        <Text className="text-xs text-gray-500">/day</Text>
+                        <Text className="font-bold text-primary">25 000 XAF</Text>
+                        <Text className="text-xs text-gray-500">/mois</Text>
                     </View>
-                    <TouchableOpacity className="w-5 h-5 bg-white shadow rounded-full items-center justify-center">
-                        <FontAwesome5 name="heart"size={16} color='#FF4EA5' />
+                    <TouchableOpacity className="w-7 h-7 bg-white shadow rounded-full items-center justify-center">
+                        <Ionicons name="heart-outline"size={16} color='#FF4EA5' />
                     </TouchableOpacity>
                 </View>
             </View>

@@ -1,8 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import * as Icon from "react-native-feather";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import Toast from 'react-native-toast-message';
 
 type props = {
@@ -26,10 +25,10 @@ export default function CardRoom({bigCard}:props){
             >
             <TouchableOpacity>
                 <Image source={require('@/assets/images/home.jpg')} className="w-full h-52" />
-                <View className="p-2">
+                <View className="py-1 px-2">
                     <Text className="font-bold">Studio Moderne</Text>
                     <View className="flex-row items-center space-x-1">
-                        <Icon.MapPin className="text-primary" width={15} />
+                        <Ionicons name="location-outline" color='#FF4EA5' size={20} />
                         <Text className="text-xs text-gray-500">Douala, Logbessou</Text>
                     </View>
                     <View className="flex-row items-center justify-between">
@@ -37,10 +36,10 @@ export default function CardRoom({bigCard}:props){
                             <Text className="font-bold text-primary">25 000 XAF</Text>
                             <Text className="text-xs text-gray-500">/mois</Text>
                         </View>
-                        <TouchableOpacity className="w-7 h-7 mb-1 bg-white shadow rounded-full items-center justify-center"
+                        <TouchableOpacity className="w-7 h-7 bg-white shadow rounded-full items-center justify-center"
                         onPress={showToast}
                         >
-                            <FontAwesome5 name="heart"size={16} color='#FF4EA5' />
+                            <Ionicons name="heart-outline"size={16} color='#FF4EA5' />
                         </TouchableOpacity>
                     </View>
                 </View>

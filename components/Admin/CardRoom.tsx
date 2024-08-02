@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import * as Icon from 'react-native-feather'
 
 export default function CardRoom(){
@@ -10,7 +10,7 @@ export default function CardRoom(){
                     <FontAwesome5 name="edit" color='white' />
                 </TouchableOpacity>
                 <TouchableOpacity className="p-4 z-20 bg-red-500 rounded-xl">
-                    <FontAwesome5 name="trash" color='white' />
+                    <Ionicons name="trash-bin" color='white' size={15} />
                 </TouchableOpacity>
             </View>
             <Image source={require("./../../assets/images/home.jpg")} className="w-full h-full rounded-2xl" />
@@ -18,7 +18,7 @@ export default function CardRoom(){
                 <View className="p-2">
                     <Text className="font-bold">Studio Moderne</Text>
                     <View className="flex-row items-center space-x-1">
-                        <Icon.MapPin className="text-primary" width={15} />
+                        <Ionicons name="location-outline" color='#FF4EA5' size={17} />
                         <Text className="text-xs text-gray-500">Douala, Logbessou</Text>
                     </View>
                     <View className="flex-row items-center justify-between">
@@ -27,7 +27,7 @@ export default function CardRoom(){
                             <Text className="text-xs text-gray-500">/mois</Text>
                         </View>
                         <TouchableOpacity className="w-5 h-5 bg-white shadow rounded-full items-center justify-center">
-                            <FontAwesome5 name="heart"size={16} color='#FF4EA5' />
+                            <Ionicons name="heart-outline"size={16} color='#FF4EA5' />
                         </TouchableOpacity>
                     </View>
                 </View>

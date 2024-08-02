@@ -1,12 +1,9 @@
 import React from "react";
-import { Tabs, useSegments } from "expo-router";
+import { Tabs } from "expo-router";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
 
 const TabLayout = () => {
-  const segments = useSegments();
-  const currentPage = segments[segments.length - 1];
-  const pagesToHideTabBar = ['[id]'];
   return (
     <Tabs
       screenOptions={{
@@ -24,12 +21,11 @@ const TabLayout = () => {
           borderRadius: 16,
           alignItems: "center",
           justifyContent: "center",
-          display: pagesToHideTabBar.includes(currentPage) ? 'none' : 'flex',
         },
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="dashboard"
         options={{
           tabBarIcon: ({ focused }) => (
             <View className="items-center pt-[10px]">
@@ -75,12 +71,12 @@ const TabLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="search"
+        name="addRoom"
         options={{
           tabBarIcon: ({ focused }) => (
             <View className="items-center justify-center h-[56px] w-[56px] rounded-full bg-[#FF4EA5] mb-[40px]">
               <Ionicons
-                name={focused ? "search" : "search-outline"}
+                name={focused ? "add" : "add-outline"}
                 color="white"
                 size={24}
               />
@@ -89,12 +85,12 @@ const TabLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="favourite"
+        name="agenda"
         options={{
           tabBarIcon: ({ focused }) => (
             <View className="items-center pt-[10px]">
               <Ionicons
-                name={focused ? "heart" : "heart-outline"}
+                name={focused ? "calendar" : "calendar-outline"}
                 color={focused ? "#FF4EA5" : "gray"}
                 size={24}
               />
@@ -105,19 +101,19 @@ const TabLayout = () => {
                   marginTop: 4,
                 }}
               >
-                Favourite
+                Agenda
               </Text>
             </View>
           ),
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="notification"
         options={{
           tabBarIcon: ({ focused }) => (
             <View className="items-center pt-[10px]">
               <Ionicons
-                name={focused ? "people" : "people-outline"}
+                name={focused ? "notifications" : "notifications-outline"}
                 color={focused ? "#FF4EA5" : "gray"}
                 size={24}
               />
@@ -128,25 +124,17 @@ const TabLayout = () => {
                   marginTop: 4,
                 }}
               >
-                Profile
+                Notif
               </Text>
             </View>
           ),
         }}
       />
       <Tabs.Screen
-        name="description/[id]"
+        name="updateRoom"
         options={{
           href: null
         }}
-
-      />
-      <Tabs.Screen
-        name="calendar"
-        options={{
-          href: null
-        }}
-
       />
     </Tabs>
   );

@@ -52,7 +52,7 @@ export default function Page(){
                     <FontAwesome5 name="facebook" size={20} color='gray' />
                 </TouchableOpacity>
             </View>
-            <Link href='/dashboard'>
+            <Link href='/(admin)/dashboard'>
                 <Text>Admin</Text>
             </Link>
         </SafeAreaView>

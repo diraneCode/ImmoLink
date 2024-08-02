@@ -1,13 +1,13 @@
 import {  View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
-import * as Icon from 'react-native-feather'
 import Card from '@/components/CardRoom';
 import CardRecommended from '@/components/CardRecommended';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Feedback from '@/components/Feedback';
 import Tag from '@/components/Tag';
 import { Link } from 'expo-router';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import Toast from 'react-native-toast-message';
+import SearchInput from '@/components/SearchInput';
 
 
 const HomeScreen = () => {
@@ -18,30 +18,26 @@ const HomeScreen = () => {
                     <View>
                         <View className="flex-row items-center">
                             <Text className="text-gray-400">Emplacement </Text>
-                            <FontAwesome5 name="chevron-down" color='gray' size={15} />
+                            <Ionicons name="chevron-down" color='gray' size={18} />
                         </View>
                         <View className="flex-row items-center space-x-2">
-                            <Icon.MapPin className="text-primary" width={17} />
+                            <Ionicons name='location-outline' size={22} color='#FF4EA5' />
                             <Text className="font-bold">Douala - 🏴‍☠️</Text>
                         </View>
                     </View>
-                    <TouchableOpacity className="w-6 h-6 bg-white shadow-md rounded-full items-center justify-center">
-                        <FontAwesome5 name="bell" color='gray' size={20} />
+                    <TouchableOpacity className="w-7 h-7 bg-white shadow-md rounded-full items-center justify-center">
+                        <Ionicons name="notifications-outline" color='gray' size={20} />
                     </TouchableOpacity>
                 </View>
                 <View>
                     <Text className="text-md font-bold">Hi Dirane 👋</Text>
                     <Text>Tu as besoin d'un logement ?</Text>
                 </View>
-                <View className="flex-row items-center justify-between bg-white px-4 py-3 rounded-full">
-                    <FontAwesome5 name="search" color='gray' size={15} />
-                    <TextInput placeholder='Studio, Chambre, Appartement, etc...' className="w-4/5" />
-                    <FontAwesome5 name="bars" color='gray' size={20} />
-                </View>
+                <SearchInput />
                 <Tag />
                 <View className="flex-row justify-between items-center">
                     <Text className="font-bold">A Proximite</Text>
-                    <Link href='/rooms' className="text-primary">
+                    <Link href='/(tabs)/rooms' className="text-primary">
                         Voir plus
                     </Link>
                 </View>
