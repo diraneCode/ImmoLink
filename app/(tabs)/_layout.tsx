@@ -1,59 +1,137 @@
-import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import React from "react";
+import { Tabs } from "expo-router";
+import { FontAwesome5, Ionicons } from "@expo/vector-icons";
+import { Text, View } from "react-native";
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
-
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const TabLayout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
+        headerShown: false,
+        tabBarActiveTintColor: "#FF4EA5",
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          position: "absolute",
+          bottom: 5,
+          left: 16,
+          right: 16,
+          height: 60,
+          elevation: 0,
+          backgroundColor: "white",
+          borderRadius: 16,
+          alignItems: "center",
+          justifyContent: "center",
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center pt-[10px]">
+              <Ionicons
+                name={focused ? "home" : "home-outline"}
+                color={focused ? "#FF4EA5" : "gray"}
+                size={24}
+              />
+              <Text
+                style={{
+                  color: focused ? "#FF4EA5" : "gray",
+                  fontSize: 12,
+                  marginTop: 4,
+                }}
+              >
+                Home
+              </Text>
+            </View>
           ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="rooms"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center pt-[10px]">
+              <Ionicons
+                name={focused ? "bed" : "bed-outline"}
+                color={focused ? "#FF4EA5" : "gray"}
+                size={24}
+              />
+              <Text
+                style={{
+                  color: focused ? "#FF4EA5" : "gray",
+                  fontSize: 12,
+                  marginTop: 4,
+                }}
+              >
+                Rooms
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="search"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center justify-center h-[56px] w-[56px] rounded-full bg-[#FF4EA5] mb-[40px]">
+              <Ionicons
+                name={focused ? "search" : "search-outline"}
+                color="white"
+                size={24}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="favourite"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center pt-[10px]">
+              <Ionicons
+                name={focused ? "heart" : "heart-outline"}
+                color={focused ? "#FF4EA5" : "gray"}
+                size={24}
+              />
+              <Text
+                style={{
+                  color: focused ? "#FF4EA5" : "gray",
+                  fontSize: 12,
+                  marginTop: 4,
+                }}
+              >
+                Favourite
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center pt-[10px]">
+              <Ionicons
+                name={focused ? "people" : "people-outline"}
+                color={focused ? "#FF4EA5" : "gray"}
+                size={24}
+              />
+              <Text
+                style={{
+                  color: focused ? "#FF4EA5" : "gray",
+                  fontSize: 12,
+                  marginTop: 4,
+                }}
+              >
+                Profile
+              </Text>
+            </View>
+          ),
         }}
       />
     </Tabs>
   );
-}
+};
+
+export default TabLayout;
