@@ -14,7 +14,7 @@ import PagerView from 'react-native-pager-view';
 const data = [
   {
     type: 'Humlan P',
-    imageUri: require('../../assets/images/home.jpg'),
+    imageUri: require('../../assets/images/rooms/room (1).jpg'),
     heading: 'Vibrant colors',
     description: 'Four on-trend colorways to seamlessly suit your style.',
     key: 'first',
@@ -22,7 +22,7 @@ const data = [
   },
   {
     type: 'Pampas',
-    imageUri: require('../../assets/images/home.jpg'),
+    imageUri: require('../../assets/images/rooms/room (2).jpg'),
     heading: 'Redefined sound',
     description: 'A bold statement tuned to perfection.',
     key: 'second',
@@ -30,7 +30,7 @@ const data = [
   },
   {
     type: 'Humlan P',
-    imageUri: require('../../assets/images/home.jpg'),
+    imageUri: require('../../assets/images/rooms/room (3).jpg'),
     heading: 'Great quality',
     description:
       'An Urbanears classic! Listen-all-day fit. Striking the perfect balance of effortless technology',
@@ -39,7 +39,7 @@ const data = [
   },
   {
     type: 'Humlan B',
-    imageUri: require('../../assets/images/home.jpg'),
+    imageUri: require('../../assets/images/rooms/room (4).jpg'),
     heading: 'From Sweden',
     description:
       'The “Plattan” in Plattan headphones is Swedish for “the slab.”',
@@ -148,17 +148,18 @@ const Item = ({
   });
 
   return (
-    <View style={styles.itemStyle}>
+    <View className="w-screen h-[90%]">
       <Animated.Image
         source={imageUri}
+        className="w-full h-screen bg-contain"
         style={[
-          styles.imageStyle,
+          // styles.imageStyle,
           {
             transform: [{ scale }],
           },
         ]}
       />
-      <View style={styles.textContainer}>
+      {/* <View style={styles.textContainer}>
         <Animated.Text
           style={[
             styles.heading,
@@ -179,7 +180,7 @@ const Item = ({
         >
           {description}
         </Animated.Text>
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -200,28 +201,28 @@ const Pagination = ({
     outputRange: [0, data.length * DOT_SIZE],
   });
 
-  return (
-    <View style={[styles.pagination]}>
-      <Animated.View
-        style={[
-          styles.paginationIndicator,
-          {
-            position: 'absolute',
-            transform: [{ translateX: translateX }],
-          },
-        ]}
-      />
-      {data.map((item) => {
-        return (
-          <View key={item.key} style={styles.paginationDotContainer}>
-            <View
-              style={[styles.paginationDot, { backgroundColor: item.color }]}
-            />
-          </View>
-        );
-      })}
-    </View>
-  );
+  // return (
+  //   <View style={[styles.pagination]}>
+  //     <Animated.View
+  //       style={[
+  //         styles.paginationIndicator,
+  //         {
+  //           position: 'absolute',
+  //           transform: [{ translateX: translateX }],
+  //         },
+  //       ]}
+  //     />
+  //     {data.map((item) => {
+  //       return (
+  //         <View key={item.key} style={styles.paginationDotContainer}>
+  //           <View
+  //             style={[styles.paginationDot, { backgroundColor: item.color }]}
+  //           />
+  //         </View>
+  //       );
+  //     })}
+  //   </View>
+  // );
 };
 
 const AnimatedPagerView = Animated.createAnimatedComponent(PagerView);
@@ -317,22 +318,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 16 * 1.5,
   },
-  logo: {
-    opacity: 0.9,
-    height: LOGO_HEIGHT,
-    width: LOGO_WIDTH,
-    resizeMode: 'contain',
-    position: 'absolute',
-    left: 10,
-    bottom: 10,
-    transform: [
-      { translateX: -LOGO_WIDTH / 2 },
-      { translateY: -LOGO_HEIGHT / 2 },
-      { rotateZ: '-90deg' },
-      { translateX: LOGO_WIDTH / 2 },
-      { translateY: LOGO_HEIGHT / 2 },
-    ],
-  },
+  // logo: {
+  //   opacity: 0.9,
+  //   height: LOGO_HEIGHT,
+  //   width: LOGO_WIDTH,
+  //   resizeMode: 'contain',
+  //   position: 'absolute',
+  //   left: 10,
+  //   bottom: 10,
+  //   transform: [
+  //     { translateX: -LOGO_WIDTH / 2 },
+  //     { translateY: -LOGO_HEIGHT / 2 },
+  //     { rotateZ: '-90deg' },
+  //     { translateX: LOGO_WIDTH / 2 },
+  //     { translateY: LOGO_HEIGHT / 2 },
+  //   ],
+  // },
   pagination: {
     position: 'absolute',
     right: 20,
@@ -369,6 +370,7 @@ const styles = StyleSheet.create({
     lineHeight: TICKER_HEIGHT,
     textTransform: 'uppercase',
     fontWeight: '800',
+    color: '#FF4EA5'
   },
 
   circleContainer: {

@@ -1,18 +1,19 @@
 import {  View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
-import Card from '@/components/CardRoom';
+import CardRoom from '@/components/CardRoom';
 import CardRecommended from '@/components/CardRecommended';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Feedback from '@/components/Feedback';
-import Tag from '@/components/Tag';
+import Tag from '@/components/RoomTag';
 import { Link } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import Toast from 'react-native-toast-message';
 import SearchInput from '@/components/SearchInput';
+import { roomData } from '@/lib/roomData';
 
 
 const HomeScreen = () => {
     return (
-        <SafeAreaView className="flex-1 bg-background px-5 relative">
+        <SafeAreaView className="flex-1 bg-background px-5 relative font-[Popins]">
             <ScrollView showsVerticalScrollIndicator={false} className="space-y-4">
                 <View className="flex-row items-center justify-between">
                     <View>
@@ -43,10 +44,11 @@ const HomeScreen = () => {
                 </View>
                 <View>
                     <ScrollView horizontal className="h-72" showsHorizontalScrollIndicator={false} contentContainerStyle={{paddingBottom: 20}} >
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
+                        {
+                            roomData.map((room) => (
+                                <CardRoom key={room.id} id={room.id} image={room.image} type={room.type} localisation={room.localisation} prix={room.prix} />
+                            ))
+                        }
                     </ScrollView>
                 </View>
                 <Text className="font-bold">Pour vous</Text>
