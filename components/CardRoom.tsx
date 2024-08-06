@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Toast from 'react-native-toast-message';
 import { roomType } from "@/lib/definition";
 import { useState } from "react";
+import { storeFavorite } from "@/lib/SaveFavorite";
 
 type props = {
     bigCard?: string

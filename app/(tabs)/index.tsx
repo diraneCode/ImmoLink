@@ -9,6 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Toast from 'react-native-toast-message';
 import SearchInput from '@/components/SearchInput';
 import { roomData } from '@/lib/roomData';
+import { roomType } from '@/lib/definition';
 
 
 const HomeScreen = () => {
@@ -45,8 +46,16 @@ const HomeScreen = () => {
                 <View>
                     <ScrollView horizontal className="h-72" showsHorizontalScrollIndicator={false} contentContainerStyle={{paddingBottom: 20}} >
                         {
-                            roomData.map((room) => (
-                                <CardRoom key={room.id} id={room.id} image={room.image} type={room.type} localisation={room.localisation} prix={room.prix} />
+                            roomData.map((room:roomType) => (
+                                <CardRoom 
+                                    key={room.id} 
+                                    id={room.id} 
+                                    type={room.type} 
+                                    prix={room.prix}
+                                    description={room.description}
+                                    image={room.image} 
+                                    localisation={room.localisation} 
+                                />
                             ))
                         }
                     </ScrollView>

@@ -1,9 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { roomType } from './definition';
 
 // Pour sauvegarder une valeur
-const storeData = async (key, value) => {
+export const storeFavorite = async (value:roomType) => {
   try {
-    await AsyncStorage.setItem(key, value);
+    await AsyncStorage.setItem('favorite', JSON.stringify(value));
+    
   } catch (e) {
     // Sauvegarde échouée
     console.error(e);
@@ -11,14 +13,15 @@ const storeData = async (key, value) => {
 };
 
 // Pour récupérer une valeur
-const getData = async (key) => {
+export const getFavorite = async (key:string) => {
   try {
     const value = await AsyncStorage.getItem(key);
-    if (value !== null) {
+    if (value !== null) {            
       return value;
     }
   } catch (e) {
     // Récupération échouée
     console.error(e);
   }
+  
 };

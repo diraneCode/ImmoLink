@@ -48,7 +48,8 @@ function RootLayoutNav() {
 
   return (
       <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false}} />
+        {/* <Stack.Screen name="(tabs)/profile.tsx" options={{ headerShown: false, presentation: 'modal' }} /> */}
       </Stack>
   );
 }

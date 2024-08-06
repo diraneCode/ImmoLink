@@ -5,12 +5,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { roomData } from "@/lib/roomData";
 import * as Linking from 'expo-linking';
 import BtnWhatsapp from "@/components/BtnWhatsapp";
+import { roomType } from "@/lib/definition";
+import ShareFile from "@/components/ShareFile";
 
 export default function DescriptionRoom(){
     const navigation = useNavigation()
     const { id } = useLocalSearchParams();
-    roomData.filter((room) => {
-        return room.id == Number(id) && console.log(room);        
+    roomData.filter((room:roomType) => {
+        return room.id == Number(id)      
     })
 
     // Pour les appels
@@ -79,6 +81,7 @@ export default function DescriptionRoom(){
                                     <Ionicons name="call" size={16} color='#FF4EA5' />
                                 </TouchableOpacity>
                                 <BtnWhatsapp />
+                                <ShareFile />
                             </View>
                         </View>
                         <Text className="font-bold px-5">Description</Text>

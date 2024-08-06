@@ -114,6 +114,7 @@ const TabLayout = () => {
       <Tabs.Screen
         name="profile"
         options={{
+          
           tabBarIcon: ({ focused }) => (
             <View className="items-center pt-[10px]">
               <Ionicons
