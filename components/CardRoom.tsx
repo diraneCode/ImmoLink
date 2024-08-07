@@ -11,7 +11,7 @@ type props = {
     bigCard?: string
 }
 
-export default function CardRoom({ id, nom, prix, description, image, localisation, type, bigCard}: roomType){
+export default function CardRoom({ id, nom, prix, description, image, ville, type, bigCard}: roomType){
     const navigation = useNavigation();
     const [favorite, setFavorite] = useState(false);
     const showToast = () => {
@@ -40,7 +40,7 @@ export default function CardRoom({ id, nom, prix, description, image, localisati
                     <Text className="font-bold">{type}</Text>
                     <View className="flex-row items-center space-x-1">
                         <Ionicons name="location-outline" color='#FF4EA5' size={20} />
-                        <Text className="text-xs text-gray-500">{localisation}</Text>
+                        <Text className="text-xs text-gray-500">{ville}</Text>
                     </View>
                     <View className="flex-row items-center justify-between">
                         <View className="flex-row items-center">

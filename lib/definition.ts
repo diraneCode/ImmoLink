@@ -1,9 +1,9 @@
 export type roomType = {
-    id: number, 
+    id?: number, 
     type: string,
     prix: number,
     description: string,
     image: string,
-    localisation: string,
+    ville: string,
     bigCard?: boolean
 }

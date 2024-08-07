@@ -6,14 +6,7 @@ import { roomData } from '@/lib/roomData';
 import { roomType } from '@/lib/definition';
 import Toast from 'react-native-toast-message';
 
-export default function Page() {
-  const [data, setData] = useState<roomType[]>([])
-  useEffect(() => {
-    const data = getFavorite('favorite')
-    setData(data)
-  }, [])
-  console.log(data);
-  
+export default function Page() {  
   
   return (
     <SafeAreaView className="flex-1 bg-background">
