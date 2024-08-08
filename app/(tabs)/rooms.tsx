@@ -5,7 +5,7 @@ import CardRoom from '@/components/CardRoom';
 import { roomData } from '@/lib/roomData';
 import { roomType } from '@/lib/definition';
 import Toast from 'react-native-toast-message';
-import useFetchData from '@/lib/api/roomsApi';
+import { useFetchData } from '@/lib/api/roomsApi';
 
 
 export default function Page() {
@@ -13,10 +13,11 @@ export default function Page() {
   
   const renderItem: ListRenderItem<roomType> = ({ item }) => (
     <CardRoom
+      id={item.id}
       type={item.type}
       prix={item.prix}
       description={item.description}
-      image={item.image}
+      photo={item.photo}
       ville={item.ville}
       bigCard={true}
     />

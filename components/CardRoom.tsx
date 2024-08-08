@@ -7,11 +7,9 @@ import { roomType } from "@/lib/definition";
 import { useState } from "react";
 import { storeFavorite } from "@/lib/SaveFavorite";
 
-type props = {
-    bigCard?: string
-}
 
-export default function CardRoom({ id, nom, prix, description, image, ville, type, bigCard}: roomType){
+
+export default function CardRoom({ id, prix, ville, type, bigCard}: roomType){
     const navigation = useNavigation();
     const [favorite, setFavorite] = useState(false);
     const showToast = () => {
@@ -35,7 +33,7 @@ export default function CardRoom({ id, nom, prix, description, image, ville, typ
                 asChild
             >
             <TouchableOpacity>
-                <Image source={image} className="w-full h-52" />
+                <Image source={require(`../assets/images/rooms/room (1).jpg`)} className="w-full h-52" />
                 <View className="py-1 px-2">
                     <Text className="font-bold">{type}</Text>
                     <View className="flex-row items-center space-x-1">

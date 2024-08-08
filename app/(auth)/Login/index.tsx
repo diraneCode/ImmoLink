@@ -1,7 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import * as Icon from 'react-native-feather'
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome5 } from "@expo/vector-icons";
 
@@ -45,14 +44,14 @@ export default function Page(){
             </View>
             <Text className="self-center text-gray-500">Or Sign In With</Text>
             <View className="flex-row justify-around">
-                <TouchableOpacity className="w-32 items-center border border-gray-500 p-3 rounded-xl">
+                <TouchableOpacity className="w-28 items-center border border-gray-500 p-2 rounded-xl">
                     <FontAwesome5 name="google" size={20} color='gray' />
                 </TouchableOpacity>
-                <TouchableOpacity className="w-32 items-center border border-gray-500 p-3 rounded-xl">
+                <TouchableOpacity className="w-28 items-center border border-gray-500 p-2 rounded-xl">
                     <FontAwesome5 name="facebook" size={20} color='gray' />
                 </TouchableOpacity>
             </View>
-            <Link href='/(admin)/dashboard'>
+            <Link href='/dashboard' asChild>
                 <Text>Admin</Text>
             </Link>
         </SafeAreaView>
