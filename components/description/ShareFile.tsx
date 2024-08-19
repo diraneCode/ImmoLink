@@ -10,7 +10,7 @@ export default function ShareFile(){
 
     useEffect(() => {
         const loadAsset = async () => {
-            const asset = Asset.fromModule(require('../assets/images/rooms/room (1).jpg'));
+            const asset = Asset.fromModule(require('@/assets/images/rooms/room (1).jpg'));
             await asset.downloadAsync();
             setImageUri(asset.localUri || null);
         }

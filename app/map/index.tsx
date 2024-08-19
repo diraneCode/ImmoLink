@@ -11,7 +11,9 @@ export default function Page() {
   }
   return (
     <View className="flex-1">
-      <MapView style={StyleSheet.absoluteFill} provider={PROVIDER_GOOGLE} showsUserLocation showsMyLocationButton initialRegion={region} region={region}>
+      <MapView 
+      style={StyleSheet.absoluteFill} provider={PROVIDER_GOOGLE} showsUserLocation showsMyLocationButton initialRegion={region} region={region}
+      >
         <Marker coordinate={region} title='Maison a louer' />
       </MapView>
     </View>

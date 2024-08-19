@@ -1,22 +1,19 @@
 import {
-  Image,
   ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-
-import Room from "../../components/Admin/Room";
 import { useNavigation } from "@react-navigation/native";
-import CardDashboard from "../../components/Admin/CardDashboard";
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import CardHome from "@/components/Admin/CardHome";
+import { useLocation } from "@/hooks/useLocation";
 
 export default function Page() {
   const navigation = useNavigation();
+  const { latitude, longitude, location, errorMsg} = useLocation();
   return (
     <View className="flex-1 bg-background">
       <ScrollView showsVerticalScrollIndicator={false} className="space-y-2">
@@ -24,7 +21,7 @@ export default function Page() {
           <Text className="text-gray-400 mt-4">Hello Joker👋</Text>
           <View className="flex-row items-center space-x-2">
             <Text className="text-3xl text-white font-bold">
-              Douala, Logbessou
+            <Text className="font-bold">{location ? `${location.ville} - ${location.pays}`   : 'erreur de reseau'}</Text>
             </Text>
             <Ionicons name="location-outline" size={25} color="#FF4EA5" />
           </View>

@@ -1,16 +1,14 @@
-import { useNavigation } from "@react-navigation/native";
 import { Link, Router } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Toast from 'react-native-toast-message';
-import { roomType } from "@/lib/definition";
+import { Troom } from "@/lib/definition";
 import { useState } from "react";
 import { storeFavorite } from "@/lib/SaveFavorite";
 
 
 
-export default function CardRoom({ id, prix, ville, type, bigCard}: roomType){
-    const navigation = useNavigation();
+export default function CardRoom({ id, prix, ville, type, bigCard}: Troom){
     const [favorite, setFavorite] = useState(false);
     const showToast = () => {
         Toast.show({
@@ -26,7 +24,7 @@ export default function CardRoom({ id, prix, ville, type, bigCard}: roomType){
     return(
         <Link href={{
             pathname: '/description/[id]',
-            params: {id: id}
+            params: {id: Number(id)}
         }} 
                 className={`${bigCard ? 'w-full' : 'w-72'} h-72 bg-white rounded-xl 
                 shadow overflow-hidden mr-5`}

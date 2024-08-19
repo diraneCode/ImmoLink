@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, ScrollView, ActivityIndicator, FlatList, ListRenderItem } from 'react-native';
+import React from 'react';
+import { View, Text, ActivityIndicator, FlatList, ListRenderItem } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CardRoom from '@/components/CardRoom';
-import { roomData } from '@/lib/roomData';
-import { roomType } from '@/lib/definition';
+import { Troom } from '@/lib/definition';
 import Toast from 'react-native-toast-message';
 import { useFetchData } from '@/lib/api/roomsApi';
 
@@ -11,7 +10,7 @@ import { useFetchData } from '@/lib/api/roomsApi';
 export default function Page() {
   const { data, loading, error} = useFetchData()
   
-  const renderItem: ListRenderItem<roomType> = ({ item }) => (
+  const renderItem: ListRenderItem<Troom> = ({ item }) => (
     <CardRoom
       id={item.id}
       type={item.type}

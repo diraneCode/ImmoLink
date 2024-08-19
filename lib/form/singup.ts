@@ -29,7 +29,6 @@ const handleSingupForm = () => {
         setTelephone("");
         setPassword("");
         setErrors({});
-
     }
 }
 
