@@ -5,10 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App(){
   const [items, setItems] = useState({
-    '2024-08-13': [{ name: 'Meeting with client', time: '10:00 AM' }],
-    '2024-08-14': [{ name: 'Team brainstorming session', time: '9:00 AM' }, { name: 'Project presentation', time: '2:00 PM' }, { name: 'Project presentation', time: '5:00 PM' }],
-    '2024-08-15': [{ name: 'Team brainstorming session', time: '9:00 AM' }, { name: 'Project presentation', time: '2:00 PM' }],
-    '2024-08-1': [{ name: 'Team brainstorming session', time: '9:00 AM' }, { name: 'Project presentation', time: '2:00 PM' }],
+    '2024-08-28': [{ name: 'Visite planifier', time: '10:00' }],
+    '2024-08-24': [{ name: 'Visite planifier', time: '15:00' }, { name: 'Visite planifier', time: '12:00' }, { name: 'Visite planifier', time: '15:00' }],
+    '2024-08-25': [{ name: 'Visite planifier', time: '17:00' }, { name: 'Visite planifier', time: '8:00' }],
+    '2024-08-27': [{ name: 'Visite planifier', time: '9:00' }, { name: 'Visite planifier', time: '13:00' }],
   });
 
   const renderEmptyData = () => {

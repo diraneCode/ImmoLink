@@ -13,24 +13,24 @@ import PagerView from 'react-native-pager-view';
 
 const data = [
   {
-    type: 'Humlan P',
-    imageUri: require('../../assets/images/rooms/room (1).jpg'),
+    type: 'Chambre',
+    imageUri: require('@/assets/images/rooms/house2.jpg'),
     heading: 'Vibrant colors',
     description: 'Four on-trend colorways to seamlessly suit your style.',
     key: 'first',
     color: '#9dcdfa',
   },
   {
-    type: 'Pampas',
-    imageUri: require('../../assets/images/rooms/room (2).jpg'),
+    type: 'Studio',
+    imageUri: require('@/assets/images/rooms/house3.jpg'),
     heading: 'Redefined sound',
     description: 'A bold statement tuned to perfection.',
     key: 'second',
     color: '#db9efa',
   },
   {
-    type: 'Humlan P',
-    imageUri: require('../../assets/images/rooms/room (3).jpg'),
+    type: 'Appartement',
+    imageUri: require('@/assets/images/rooms/house4.jpg'),
     heading: 'Great quality',
     description:
       'An Urbanears classic! Listen-all-day fit. Striking the perfect balance of effortless technology',
@@ -38,8 +38,8 @@ const data = [
     color: '#999',
   },
   {
-    type: 'Humlan B',
-    imageUri: require('../../assets/images/rooms/room (4).jpg'),
+    type: 'Chambre',
+    imageUri: require('@/assets/images/rooms/house1.jpg'),
     heading: 'From Sweden',
     description:
       'The “Plattan” in Plattan headphones is Swedish for “the slab.”',
@@ -266,7 +266,7 @@ export default function HeadphonesCarouselExample() {
       </AnimatedPagerView>
       <Image
         style={styles.logo}
-        source={require('../../assets/images/home.jpg')}
+        source={require('@/assets/images/home.jpg')}
       />
       <Pagination
         scrollOffsetAnimatedValue={scrollOffsetAnimatedValue}

@@ -19,6 +19,10 @@ export default function ModalCalendar(){
     const handleShowModal = () => {
         setShowModal(!showModal)
     }
+    const sendVisite = () => {
+        alert("Votre demande de visite a ete envoye");
+        setShowModal(!showModal)
+    }
     return(
         <View>
             <TouchableOpacity className="w-2/4 self-center rounded-full p-3 bg-primary px-5 flex-row  space-x-3" onPress={handleShowModal}>
@@ -47,7 +51,7 @@ export default function ModalCalendar(){
                         <TouchableOpacity onPress={handleShowModal}>
                             <Text className="text-xl text-blue-400">Cancel</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={handleShowModal}>
+                        <TouchableOpacity onPress={sendVisite}>
                             <Text className="text-xl text-blue-400">OK</Text>
                         </TouchableOpacity>
                     </View>

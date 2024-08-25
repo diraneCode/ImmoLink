@@ -1,4 +1,7 @@
 import {
+  ActivityIndicator,
+  FlatList,
+  ListRenderItem,
   ScrollView,
   Text,
   TextInput,
@@ -10,45 +13,72 @@ import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import CardHome from "@/components/Admin/CardHome";
 import { useLocation } from "@/hooks/useLocation";
+import { useFetchData } from "@/lib/api/roomsApi";
+import { Troom } from "@/lib/definition";
+import CardRoom from "@/components/CardRoom";
+import { roomData } from "@/lib/roomData";
 
 export default function Page() {
   const navigation = useNavigation();
   const { latitude, longitude, location, errorMsg} = useLocation();
+  // const { data, loading, error} = useFetchData()
+
+  //   const renderItem: ListRenderItem<Troom> = ({ item }) => (
+  //       <CardHome
+  //           id={item.id}
+  //           photo={item.photo}
+  //       />
+  //   );
   return (
     <View className="flex-1 bg-background">
       <ScrollView showsVerticalScrollIndicator={false} className="space-y-2">
         <View className="w-full h-48 items-center bg-green-800 rounded-b-[50] p-5 space-y-4">
-          <Text className="text-gray-400 mt-4">Hello Joker👋</Text>
+          <Text className="text-gray-400 mt-4">Hello Beatrice 👋</Text>
           <View className="flex-row items-center space-x-2">
             <Text className="text-3xl text-white font-bold">
             <Text className="font-bold">{location ? `${location.ville} - ${location.pays}`   : 'erreur de reseau'}</Text>
             </Text>
             <Ionicons name="location-outline" size={25} color="#FF4EA5" />
           </View>
-          <View className="w-full flex-row items-center bg-white py-3 px-8 rounded-full space-x-2">
-            <Ionicons name="search" size={20} />
-            <TextInput placeholder="What are you find ?" className="text-xl" />
+          <View className="w-full flex-row items-center bg-white py-3 px-8 rounded-full justify-between">
+            <Ionicons name="desktop-outline" size={20} />
+            <Text className="text-xl font-bold">Dashboard</Text>
+            <Link href="/(tabs)" className="px-4 self-end" asChild>
+          <Ionicons name="power" size={25} color='red' />
+            {/* <Text className="text-primary">Voir plus</Text> */}
+          </Link>
+            {/* <TextInput placeholder="What are you find ?" className="text-xl" /> */}
           </View>
         </View>
         <View className="px-4 flex-row items-center justify-between">
           <Link href="/addRoom" asChild>
             <TouchableOpacity className="flex-row items-center space-x-3">
               <Text>Ajouter une chambre</Text>
-              <Ionicons name="add-circle-outline" size={20} />
+              <Ionicons name="add-circle-outline" size={30} />
             </TouchableOpacity>
           </Link>
-          <Link href="/rooms" className="px-4 self-end" asChild>
-            <Text className="text-primary">Voir plus</Text>
-          </Link>
+          
         </View>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          className="w-fit px-4"
-        >
-          <CardHome />
-          <CardHome />
-          <CardHome />
+        {/* {
+            loading ? <View className="h-full items-center justify-center">
+                    <ActivityIndicator size={100} color='#FF4EA5' />
+                </View> :
+            <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={data}
+                contentContainerStyle={{ rowGap: 10 }}
+                showsVerticalScrollIndicator={false}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={renderItem}
+            />
+        } */}
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {
+                roomData.map((room, index) => (
+                    <CardHome key={index} photo={room.image} />
+                ))
+            }
         </ScrollView>
       </ScrollView>
     </View>

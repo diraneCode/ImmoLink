@@ -59,6 +59,7 @@ export default function Page() {
       setPassword("");
       setErrors({});
 
+      alert('Inscription reussis');
       // setShowModal(true)
     }
   };

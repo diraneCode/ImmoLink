@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const createUser = async (user:Tuser) => {
     try{
-        const response = await axios.post('http://172.27.16.1:3000/users',{
+        const response = await axios.post('http://192.168.43.114:3000/users',{
             nom: user.nom,
             email: user.email,
             telephone: user.telephone,
@@ -26,7 +26,7 @@ const createUser = async (user:Tuser) => {
 const loginUser = async (user: Tuser) => {
 
     try{
-        const response = await axios.post(`http://172.27.16.1:3000/login`,
+        const response = await axios.post(`http://192.168.43.114:3000/login`,
             {
                 email: user.email,
                 password: user.password
@@ -50,7 +50,7 @@ const loginUser = async (user: Tuser) => {
 
 const singupUser = async (user: Tuser) => {
     try{
-        const response = await axios.post(`http://172.27.16.1:3000/singup`,
+        const response = await axios.post(`http://192.168.43.114:3000/singup`,
             {
                 nom: user.nom,
                 email: user.email,

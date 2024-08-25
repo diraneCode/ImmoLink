@@ -2,11 +2,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import * as Linking from 'expo-linking';
 
-export default function BtnWhatsapp(){
+export default function BtnWhatsapp({numero, image, localisation}){
     const sendWhatsAppMessage = () => {
         const phoneNumber = '+237696571842'; // Numéro de téléphone
-        const message = 'Nous envons trouver une chambre dans votre publication'; // Message
-        const imageUrl = 'https://mega.nz/file/4wswHBSa#9pKTKXmxcHr1CsGE_YfwV7va8uesnlkVDFgfNHjSg5E'; // URL de l'image sur le serveur
+        const message = `Je suis interresser par votre chambre de ${localisation}`; // Message
+        const imageUrl = image; // URL de l'image sur le serveur
         const url = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message + ' ' + imageUrl)}`;
     
         Linking.openURL(url).catch(err => console.error('An error occurred', err));

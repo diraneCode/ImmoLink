@@ -1,4 +1,4 @@
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -6,6 +6,7 @@ import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
 import { Troom } from "@/lib/definition";
 import { addRoom } from "@/lib/api/roomsApi";
+import { Link } from "expo-router";
 
 export default function Page() {
   const navigation = useNavigation();
@@ -35,19 +36,11 @@ export default function Page() {
     const [error, setError] = useState<Troom>();
 
     const validateRoom = () => {
-        let errors: Troom = {
-            id: 0,
-            type: "",
-            prix: 0,
-            description: "",
-            ville: "",
-            // photo: "",
-            nbChambre: 0
-        }
+        let errors = {}
         if(!type) errors.type = "Le type est requis"
         if(!ville) errors.ville = "La ville est requise"
-        if(!prix) errors.prix = 0
-        if(!nbChampre) errors.nbChambre = 0
+        if(!prix) errors.prix = "Le prix est requis"
+        if(!nbChampre) errors.nbChambre = "Le nombre de chambre est requis"
         if(!description) errors.description = "La description est requise"
     
         setError(errors);
@@ -56,21 +49,22 @@ export default function Page() {
     }
 
     const handleCreateRoom = () => {
-        if(validateRoom()){
-            let room:Troom = {
-                type: type || "",
-                prix: prix || 0,
-                description: description || "",
-                ville: ville || "",
-                // photo: photo || "",
-                nbChambre: nbChampre || 0
-            }
-            addRoom(room);
+      if(validateRoom()){
+          alert('Votre logement a ete publier');
+            // let room:Troom = {
+            //     type: type || "",
+            //     prix: prix || 0,
+            //     description: description || "",
+            //     ville: ville || "",
+            //     // photo: photo || "",
+            //     nbChambre: nbChampre || 0
+            // }
+            // addRoom(room);
             setType("")
             setPrix("")
             setDescription("")
             setVille("")
-            setNbChambre("")
+            setNbChambre("");
         }
     }
 
@@ -87,11 +81,11 @@ export default function Page() {
         <Text className="font-bold text-xl">Ajouter une proprieter</Text>
         <Text></Text>
       </View>
-      <View className="space-y-4">
+      <ScrollView className="space-y-4" contentContainerStyle={{paddingBottom: 100}} showsVerticalScrollIndicator={false}>
         <View className="space-y-1">
           <Text>Type de chanbre</Text>
           <TextInput
-            placeholder="Studio"
+            placeholder="Ex: Studio, Chambre ..."
             className="bg-gray-300/20 px-4 rounded py-3"
             value={type}
             onChangeText={setType}
@@ -101,7 +95,7 @@ export default function Page() {
         <View className="space-y-1">
           <Text>Ville</Text>
           <TextInput
-            placeholder="Ville"
+            placeholder="Ex: Douala"
             className="bg-gray-300/20 px-4 rounded py-3"
             value={ville}
             onChangeText={setVille}
@@ -145,9 +139,11 @@ export default function Page() {
           {error?.description && <Text className="text-red-500">{error?.description}</Text>}
         </View>
         <View className="flex-row justify-between">
-          <TouchableOpacity className="p-3 bg-blue-400 rounded-xl">
-            <Text className="text-white text-xl text-center">Localisation</Text>
-          </TouchableOpacity>
+          <Link href='/map' asChild>
+            <TouchableOpacity className="p-3 bg-blue-400 rounded-xl">
+              <Text className="text-white text-xl text-center">Localisation</Text>
+            </TouchableOpacity>
+          </Link>
           <TouchableOpacity
             className="p-3 bg-blue-400 rounded-xl"
             onPress={pickImage}
@@ -157,12 +153,12 @@ export default function Page() {
             </Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity className="bg-primary rounded-xl p-3">
-          <Text className="text-lg text-white text-center" onPress={handleCreateRoom}>
-            Publier l'annonce
+        <TouchableOpacity className="bg-primary rounded-xl p-3" onPress={handleCreateRoom}>
+          <Text className="text-lg text-white text-center">
+            Publier le logement
           </Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }

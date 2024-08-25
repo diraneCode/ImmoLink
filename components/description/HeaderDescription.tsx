@@ -11,7 +11,7 @@ export default function HeaderDescription() {
         >
             <Ionicons name="chevron-back" size={25} color='black' />
         </TouchableOpacity>
-        <Text className="font-bold text-xl">Review</Text>
+        <Text className="font-bold text-xl">Description</Text>
         <TouchableOpacity className="w-8 h-8 bg-white rounded-full items-center justify-center">
             <Ionicons name="heart-outline"size={16} color='#FF4EA5' />
         </TouchableOpacity>

@@ -9,22 +9,24 @@ import BtnCall from "@/components/description/BtnCall";
 import HeaderDescription from "@/components/description/HeaderDescription";
 import BtnMail from "@/components/description/BtnMail";
 import ModalCalendar from "@/components/description/ModalCalendar";
+import ModalMap from "@/components/description/ModalMap";
 
 
 export default function DescriptionRoom(){
 
     const { id } = useLocalSearchParams();
-    const {data, error, loading} = useOneFetchData(Number(id));
+    // const {data, error, loading} = useOneFetchData(Number(id));
+    const data = roomData.filter(element => element.id === Number(id));
     
     return(
         <View className="flex-auto bg-background relative">
-            {
+            {/* {
                 loading ? <View className="h-screen items-center justify-center">
                     <ActivityIndicator size={100} color='#FF4EA5' />
-                </View> :
+                </View> : */}
                 <ScrollView className="w-full h-fit">
                 <View className="h-2/4 relative">
-                    <Image source={require(`@/assets/images/rooms/room (1).jpg`)} className="w-full h-full" />
+                    <Image source={data[0].image} className="w-full h-full" />
                     <HeaderDescription />
                     <Link href='/see' className="absolute bottom-0 p-2 bg-primary rounded-md self-end" asChild>
                         <Text className="text-white">Voir plus</Text>
@@ -33,54 +35,55 @@ export default function DescriptionRoom(){
                     <View className="h-screen mt-6 space-y-2">
                         <View className="flex-row justify-between items-center px-5">
                             <View className="w-fit py-1 px-2 rounded border border-primary">
-                                <Text className="text-primary font-bold">{data?.prix} XAF/mois</Text>
+                                <Text className="text-primary font-bold">{data[0].prix} XAF/mois</Text>
                             </View>
-                            <Link href='/map' asChild>
+                            {/* <Link href='/map' asChild>
                                 <TouchableOpacity className="flex-row items-center space-x-1">
                                     <Ionicons name="map" size={20} />
                                     <Text>Ouvrir la carte</Text>
                                 </TouchableOpacity>
-                            </Link>
+                            </Link> */}
+                            <ModalMap type={data[0].type} lat={data[0].latitude} long={data[0].longitude} latDelta={data[0].latDelta} longDelta={data[0].longDelta} />
                         </View>
                         <View className="space-y-2">
                             <View className="flex-row items-center justify-between px-5">
-                                <Text className="font-bold">{roomData[Number(id)].type}</Text>
+                                <Text className="font-bold">{data[0].type}</Text>
                                 <View className="flex-row items-center gap-x-1">
                                     <Ionicons name="location-outline" size={20} color='#FF4EA5' />
-                                    <Text>{data?.ville}</Text>
+                                    <Text>{data[0].localisation}</Text>
                                 </View>
                             </View>
                             <View className="flex-row justify-between border p-2 border-gray-300">
                                 <View className="flex-row space-x-2">
                                     <View className="w-10 h-10 bg-primary rounded-full overflow-hidden">
-                                        <Image source={require('@/assets/images/profile.jpg')} className="w-full h-full" />
+                                        <Image source={data[0].proprietaire.image} className="w-full h-full" />
                                     </View>
                                     <View>
-                                        <Text>Dirane Joker</Text>
+                                        <Text>{data[0].proprietaire.nom}</Text>
                                         <Text>Proprietaire</Text>
                                     </View>
                                 </View>
                                 <View className="w-2/5 flex-row justify-between">
-                                    <BtnMail />
-                                    <BtnCall />
-                                    <BtnWhatsapp />
-                                    <ShareFile />
+                                    {/* <BtnMail /> */}
+                                    <BtnCall numero={data[0].proprietaire.telephone} />
+                                    <BtnWhatsapp numero={data[0].proprietaire.telephone} image={data[0].image} localisation={data[0].localisation} />
+                                    <ShareFile image={data[0].image} />
                                 </View>
                             </View>
                             <Text className="font-bold px-5">Description</Text>
-                            <Text className="text-left px-5" numberOfLines={3}>
-                                {data?.description}
+                            <Text className="text-left px-5 mb-4">
+                                {data[0].description}
                             </Text>
                             <ModalCalendar />
                         </View>
                     </View>
                 </ScrollView>
-            }
-            <Link href='/message' className="w-12 h-12 rounded-full bg-primary items-center justify-center absolute bottom-14 right-5" asChild>
+            {/* } */}
+            {/* <Link href='/message' className="w-12 h-12 rounded-full bg-primary items-center justify-center absolute bottom-14 right-5" asChild>
                 <TouchableOpacity>
                     <Ionicons name="chatbox" size={20} color='white' />
                 </TouchableOpacity>
-            </Link>
+            </Link> */}
         </View>
     );
 }

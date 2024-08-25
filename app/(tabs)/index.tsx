@@ -9,11 +9,13 @@ import SearchInput from '@/components/SearchInput';
 import RoomList from '@/components/home/RoomList';
 import RecommendedList from '@/components/home/RecommendedList';
 import { useLocation } from '@/hooks/useLocation';
+import CardHome from '@/components/Admin/CardHome';
+import { roomData } from '@/lib/roomData';
+import CardRoom from '@/components/CardRoom';
 
 
 const HomeScreen = () => {
     const { latitude, longitude, location, errorMsg} = useLocation();
-    // console.log(location);
     
     return (
         <SafeAreaView className="flex-1 bg-background px-5 relative font-[Popins]">
@@ -29,23 +31,32 @@ const HomeScreen = () => {
                             <Text className="font-bold">{location ? `${location.ville} - ${location.pays}`   : 'erreur de reseau'}</Text>
                         </View>
                     </View>
-                    <TouchableOpacity className="w-7 h-7 bg-white shadow-md rounded-full items-center justify-center">
-                        <Ionicons name="notifications-outline" color='gray' size={20} />
-                    </TouchableOpacity>
+                    <Link href='/Login' asChild>
+                        <TouchableOpacity className="w-7 h-7 bg-white shadow-md rounded-full items-center justify-center">
+                            <Ionicons name="person" color='gray' size={20} />
+                        </TouchableOpacity>
+                    </Link>
                 </View>
                 <View>
-                    <Text className="text-md font-bold">Hi Dirane 👋</Text>
+                    <Text className="text-md font-bold">Hi, Bienvenue 👋</Text>
                     <Text>Tu as besoin d'un logement ?</Text>
                 </View>
                 <SearchInput />
                 <Tag />
                 <View className="flex-row justify-between items-center">
-                    <Text className="font-bold">A Proximite</Text>
+                    <Text className="font-bold">Disponible</Text>
                     <Link href='/(tabs)/rooms' className="text-primary">
                         Voir plus
                     </Link>
                 </View>
-                <RoomList />
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {
+                        roomData.map((room, index) => (
+                            <CardRoom key={index} id={room.id} prix={room.prix} type={room.type} photo={room.image} ville={room.localisation}  />
+                        ))
+                    }
+                </ScrollView>
+                {/* <RoomList /> */}
                 <RecommendedList />
             </ScrollView>
             {/* <Feedback /> */}

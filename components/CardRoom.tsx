@@ -8,7 +8,7 @@ import { storeFavorite } from "@/lib/SaveFavorite";
 
 
 
-export default function CardRoom({ id, prix, ville, type, bigCard}: Troom){
+export default function CardRoom({ id, prix, photo, ville, type, bigCard}: Troom){
     const [favorite, setFavorite] = useState(false);
     const showToast = () => {
         Toast.show({
@@ -31,7 +31,7 @@ export default function CardRoom({ id, prix, ville, type, bigCard}: Troom){
                 asChild
             >
             <TouchableOpacity>
-                <Image source={require(`../assets/images/rooms/room (1).jpg`)} className="w-full h-52" />
+                <Image source={photo} className="w-full h-52" />
                 <View className="py-1 px-2">
                     <Text className="font-bold">{type}</Text>
                     <View className="flex-row items-center space-x-1">

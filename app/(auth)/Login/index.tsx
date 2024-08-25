@@ -110,7 +110,7 @@ export default function Page() {
         </TouchableOpacity>
       </View>
       <Link href="/dashboard" asChild>
-        <Text>Admin</Text>
+        <Text className="text-xs text-gray-200/50">Admin</Text>
       </Link>
     </SafeAreaView>
   );

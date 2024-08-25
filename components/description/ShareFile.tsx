@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 
-export default function ShareFile(){
+export default function ShareFile({image}){
     const [imageUri, setImageUri] = useState("");
 
     useEffect(() => {
         const loadAsset = async () => {
-            const asset = Asset.fromModule(require('@/assets/images/rooms/room (1).jpg'));
+            const asset = Asset.fromModule(image);
             await asset.downloadAsync();
             setImageUri(asset.localUri || null);
         }

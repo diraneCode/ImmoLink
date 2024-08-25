@@ -1,24 +1,25 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View, Text, FlatList, ListRenderItem, ActivityIndicator } from "react-native";
+import { View, Text, FlatList, ListRenderItem, ActivityIndicator, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
 import CardRoom from "@/components/Admin/CardRoom";
 import { useFetchData } from "@/lib/api/roomsApi";
 import { Troom } from "@/lib/definition";
+import { roomData } from "@/lib/roomData";
 
 export default function Page() {
-  const { data, loading } = useFetchData();
-  const renderItem: ListRenderItem<Troom> = ({ item }) => (
-    <CardRoom
-      id={item.id}
-      type={item.type} 
-      prix={item.prix} 
-      description={item.description} 
-      ville={item.ville} 
-      nbChambre={item.nbChambre}
+  // const { data, loading } = useFetchData();
+  // const renderItem: ListRenderItem<Troom> = ({ item }) => (
+  //   <CardRoom
+  //     id={item.id}
+  //     type={item.type} 
+  //     prix={item.prix} 
+  //     description={item.description} 
+  //     ville={item.ville} 
+  //     nbChambre={item.nbChambre}
       
-    />
-  );
+  //   />
+  // );
   const navigation = useNavigation();
 
   return (
@@ -29,7 +30,7 @@ export default function Page() {
           <Text>Ici vous pouvez gerer vos chambres.</Text>
         </View>
       </View>
-      {
+      {/* {
         loading ? <View className="h-full items-center justify-center">
                       <ActivityIndicator size={100} color='#FF4EA5' />
                   </View> :
@@ -40,7 +41,14 @@ export default function Page() {
           keyExtractor={(item) => item.id}
           renderItem={renderItem}
         />
-      }
+      } */}
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom: 50}}>
+          {
+              roomData.map((room, index) => (
+                  <CardRoom key={index} id={room.id} prix={room.prix} type={room.type} photo={room.image} ville={room.localisation} description={room.description} />
+              ))
+          }
+      </ScrollView>
     </SafeAreaView>
   );
 }

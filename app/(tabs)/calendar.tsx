@@ -12,6 +12,10 @@ export default function Page(){
     const finalDate = `${parts[0]}, ${parts[2]} ${parts[1]}`;
     
     const [selected, setSelected] = useState(dateNow.toString());
+
+    const sendVisite = () => {
+        alert("Votre demande de visite a ete envoye")
+    }
     
     return(
         <Modal isVisible={true}
@@ -33,7 +37,7 @@ export default function Page(){
                     <TouchableOpacity>
                         <Text className="text-xl text-blue-400">Cancel</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={sendVisite}>
                         <Text className="text-xl text-blue-400">OK</Text>
                     </TouchableOpacity>
                 </View>

@@ -112,13 +112,13 @@ const TabLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="visite"
         options={{
           
           tabBarIcon: ({ focused }) => (
             <View className="items-center pt-[10px]">
               <Ionicons
-                name={focused ? "people" : "people-outline"}
+                name={focused ? "notifications" : "notifications-outline"}
                 color={focused ? "#FF4EA5" : "gray"}
                 size={24}
               />
@@ -129,7 +129,7 @@ const TabLayout = () => {
                   marginTop: 4,
                 }}
               >
-                Profile
+                Visite
               </Text>
             </View>
           ),

@@ -12,7 +12,7 @@ const useFetchData = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = await axios.get('http://172.27.16.1:3000/rooms');
+                const response = await axios.get('http://192.168.43.114:3000/rooms');
                 const result = response.data
                 setData(result)
                 // console.log(result);
@@ -40,7 +40,7 @@ const useOneFetchData = (id:number) => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = axios.get(`http://172.27.16.1:3000/rooms/${id}`);
+                const response = axios.get(`http://192.168.43.114:3000/rooms/${id}`);
                 const result = (await response).data
                 setData(result);
                 // console.log(result);
@@ -61,27 +61,32 @@ const useOneFetchData = (id:number) => {
 
 /** Ajout d'une chambre */
 const addRoom = async (room: Troom) => {
-    const response = await axios.post(`http://172.27.16.1:3000/rooms`,
-        {
-            type: room.type,
-            ville: room.ville,
-            prix: room.prix,
-            nbChambre: room.nbChambre,
-            descriptiom: room.description
-        },
-        {
-            headers: {
-                'Content-Type': 'application/json'
+    try{
+        const response = await axios.post(`http://192.168.43.114:3000/rooms`,
+            {
+                type: room.type,
+                ville: room.ville,
+                prix: room.prix,
+                nbChambre: room.nbChambre,
+                descriptiom: room.description
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
-        }
-    );
-    const data = await response.data
+        );
+        const data = await response.data
+        console.log(data);
+    }catch(error){
+        console.log('Erreur lors de l\'enregistrement de l\'utilisateur' + error);
+    }
 }
 
 /** Modification d'une chmabre */
 const updateRoom = async (id:number) => {
     try{
-        const response = await axios.put(`http://172.27.16.1:3000/rooms/${id}`);
+        const response = await axios.put(`http://192.168.43.114:3000/rooms/${id}`);
         const data = await response.data;
         console.log(data);
     }catch(error){
@@ -93,7 +98,7 @@ const updateRoom = async (id:number) => {
 
 const deleteRoom = async (id:number) => {
     try{
-        const response = await axios.delete(`http://172.27.16.1:3000/rooms/${id}`);
+        const response = await axios.delete(`http://192.168.43.114:3000/rooms/${id}`);
         const data = response.data
         console.log("Chambre supprimer");
     }catch(error){
